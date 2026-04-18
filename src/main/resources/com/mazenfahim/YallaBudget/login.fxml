@@ -2,14 +2,17 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.PasswordField?>
-
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.shape.SVGPath?>
 <VBox alignment="CENTER" id="MainLayout" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       stylesheets="@css/login.css" fx:controller="com.mazenfahim.YallaBudget.LoginController">
     <padding>
@@ -17,14 +20,55 @@
     </padding>
 
     <VBox id="loginForm">
-        <TextField fx:id="usernameField" id="usernameField" promptText="Enter your username" styleClass="field"/>
-        <TextField fx:id="emailField" id="emailField" promptText="Enter your email" styleClass="field"/>
-        <PasswordField fx:id="passwordField" id="passwordField" promptText="Enter your password" styleClass="field"/>
+
+        <!-- Title -->
+        <Label text="💰 YallaBudget" id="titleLabel"/>
+        <Label text="Welcome back! Please log in." id="subtitleLabel"/>
+
+        <!-- Fields -->
+        <TextField fx:id="usernameField" promptText="Enter your username" styleClass="field"/>
+        <TextField fx:id="emailField" promptText="Enter your email" styleClass="field"/>
+
+        <!-- Password with toggle -->
+        <StackPane alignment="CENTER_RIGHT" styleClass="passwordBox">
+            <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="field"/>
+            <TextField fx:id="passwordVisible" promptText="Enter your password" styleClass="field" visible="false" managed="false"/>
+            <Button onAction="#togglePasswordVisibility"
+                    pickOnBounds="false"
+                    styleClass="eye-button"
+                    StackPane.alignment="CENTER_RIGHT">
+                <graphic>
+                    <SVGPath content="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
+                             styleClass="eye-icon"/>
+                </graphic>
+            </Button>
+        </StackPane>
+
+        <!-- Error label -->
+        <Label fx:id="errorLabel" id="errorLabel" text="" wrapText="true"/>
+
+        <!-- Login Button -->
         <Button fx:id="loginButton" id="loginButton" text="Login" onAction="#validateCredentials"/>
-        <HBox>
-            <CheckBox fx:id="remember_me" text="Remember me"/>
-            <Region HBox.hgrow="ALWAYS" />
+
+        <!-- Remember me & Forgot password -->
+        <HBox alignment="CENTER_LEFT" id="bottomRow">
+            <CheckBox fx:id="remember_me" id="remember_me" text="Remember me"/>
+            <Region HBox.hgrow="ALWAYS"/>
             <Hyperlink fx:id="forgotPassword" id="forgotPassword" text="Forgot password?"/>
         </HBox>
+
+        <!-- Divider -->
+        <HBox alignment="CENTER" spacing="10" id="dividerBox">
+            <Region HBox.hgrow="ALWAYS" id="dividerLine"/>
+            <Label text="or" id="dividerLabel"/>
+            <Region HBox.hgrow="ALWAYS" id="dividerLine"/>
+        </HBox>
+
+        <!-- Sign up link -->
+        <HBox alignment="CENTER" spacing="4">
+            <Label text="Don't have an account?" id="signupPrompt"/>
+            <Hyperlink fx:id="signupLink" id="signupLink" text="Sign up" onAction="#goToSignUp"/>
+        </HBox>
+
     </VBox>
 </VBox>

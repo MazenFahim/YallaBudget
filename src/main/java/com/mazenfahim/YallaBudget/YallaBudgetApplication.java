@@ -10,7 +10,7 @@ import java.io.IOException;
 public class YallaBudgetApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(YallaBudgetApplication.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(YallaBudgetApplication.class.getResource("signup.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 860, 600);
         stage.setTitle("Yalla Budget");
         stage.setScene(scene);

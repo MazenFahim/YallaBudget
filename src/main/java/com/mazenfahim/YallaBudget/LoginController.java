@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.User;
 
@@ -30,6 +27,9 @@ public class LoginController {
     private TextField emailField;
     @FXML
     private PasswordField passwordField;
+
+    @FXML private Label errorLabel;
+    @FXML private TextField passwordVisible;
 
 
     private String username;
@@ -88,4 +88,31 @@ public class LoginController {
         stage.show();
     }
 
+    @FXML
+    private void togglePasswordVisibility() {
+        if (passwordField.isVisible()) {
+            passwordVisible.setText(passwordField.getText());
+            passwordField.setVisible(false);
+            passwordField.setManaged(false);
+            passwordVisible.setVisible(true);
+            passwordVisible.setManaged(true);
+        } else {
+            passwordField.setText(passwordVisible.getText());
+            passwordVisible.setVisible(false);
+            passwordVisible.setManaged(false);
+            passwordField.setVisible(true);
+            passwordField.setManaged(true);
+        }
+    }
+
+    @FXML
+    private void goToSignUp(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/com/mazenfahim/YallaBudget/signup.fxml")
+        );
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root, 860, 600));
+        stage.show();
+    }
 }
