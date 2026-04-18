@@ -1,0 +1,130 @@
+#MainLayout {
+    -fx-background-color: #F7F3EC;
+}
+
+#loginForm {
+    -fx-pref-width: 400px;
+    -fx-pref-height: 320px;
+    -fx-max-width: 400px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 18px;
+    -fx-border-color: #E7DED1;
+    -fx-border-radius: 18px;
+    -fx-border-width: 1px;
+    -fx-padding: 32px 28px 32px 28px;
+    -fx-spacing: 16px;
+    -fx-alignment: CENTER;
+}
+
+.field {
+    -fx-pref-width: 280px;
+    -fx-pref-height: 42px;
+
+    -fx-background-color: #FFF8F1;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 0;
+
+    -fx-border-color: #E7DED1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+
+    -fx-text-fill: #1E1E1E;
+    -fx-prompt-text-fill: #7B7B7B;
+
+    -fx-highlight-fill: #F28C28;
+    -fx-highlight-text-fill: white;
+
+    -fx-focus-color: #F28C28;
+    -fx-faint-focus-color: rgba(242, 140, 40, 0.18);
+
+    -fx-padding: 0 14px 0 14px;
+    -fx-font-size: 14px;
+}
+
+#loginButton {
+    -fx-pref-width: 280px;
+    -fx-pref-height: 42px;
+
+    -fx-background-color: #F28C28;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+}
+
+#loginButton:hover {
+    -fx-background-color: #E67E22;
+}
+
+#loginButton:pressed {
+    -fx-background-color: #D96D0F;
+}
+#remember_me {
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial Rounded MT Bold";
+}
+
+#remember_me .box {
+    -fx-background-color: #FFF8F1;
+    -fx-border-color: #E7DED1;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-min-width: 18px;
+    -fx-min-height: 18px;
+    -fx-max-width: 18px;
+    -fx-max-height: 18px;
+}
+
+#remember_me:selected .box {
+    -fx-background-color: #F28C28;
+    -fx-border-color: #F28C28;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+#remember_me:selected .mark {
+    -fx-background-color: white;
+    -fx-shape: "M2 6 L5 9 L10 3";
+    -fx-scale-x: 0.7;
+    -fx-scale-y: 0.7;
+    -fx-padding: 4px;
+    -fx-background-insets: 0;
+}
+
+#remember_me .mark {
+    -fx-background-color: transparent;
+    -fx-padding: 4px;
+}
+#remember_me:hover .box {
+    -fx-border-color: #F28C28;
+}
+
+#remember_me .label {
+    -fx-text-fill: #5A5A5A;
+    -fx-font-size: 13px;
+    -fx-padding: 0 0 0 5px;
+}
+#forgotPassword {
+    -fx-text-fill: #F28C28;
+    -fx-font-size: 13px;
+    -fx-border-color: transparent;
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+}
+
+#forgotPassword:hover {
+    -fx-text-fill: #E67E22;
+}
+
+#forgotPassword:visited {
+    -fx-text-fill: #F28C28;
+}

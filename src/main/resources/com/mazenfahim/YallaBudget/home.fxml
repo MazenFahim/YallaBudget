@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mazenfahim.YallaBudget.HomeController"
+            stylesheets="@css/home.css"
+            id="mainLayout"
+            prefHeight="680.0" prefWidth="900.0">
+
+    <!-- Sidebar -->
+    <VBox id="sidebar"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0">
+
+        <Label text="💰 YallaBudget" id="appTitle" />
+
+        <VBox id="navLinks" spacing="6">
+            <Button text="🏠  Dashboard"  styleClass="navBtn, activeNav" />
+            <Button text="💳  Transactions" styleClass="navBtn" />
+            <Button text="📊  Reports"     styleClass="navBtn" />
+            <Button text="🎯  Budgets"     styleClass="navBtn" />
+            <Button text="⚙️  Settings"    styleClass="navBtn" />
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS" />
+
+        <Button text="🚪  Log Out" id="logoutBtn" onAction="#logout" />
+    </VBox>
+
+    <!-- Main Content -->
+    <VBox id="mainContent" spacing="24"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="220" AnchorPane.rightAnchor="0">
+
+        <!-- Top Bar -->
+        <HBox id="topBar" alignment="CENTER_LEFT">
+            <Label text="Good morning, Mazen 👋" id="greeting" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label text="April 2026" id="dateLabel" />
+        </HBox>
+
+        <!-- Summary Cards -->
+        <HBox spacing="16" alignment="CENTER_LEFT">
+
+            <VBox styleClass="card" id="incomeCard">
+                <Label text="Total Income" styleClass="cardLabel" />
+                <Label text="EGP 24,500" styleClass="cardAmount" />
+                <Label text="↑ 12% this month" styleClass="cardTrend, positive" />
+            </VBox>
+
+            <VBox styleClass="card" id="expenseCard">
+                <Label text="Total Expenses" styleClass="cardLabel" />
+                <Label text="EGP 13,200" styleClass="cardAmount" />
+                <Label text="↓ 5% this month" styleClass="cardTrend, negative" />
+            </VBox>
+
+            <VBox styleClass="card" id="balanceCard">
+                <Label text="Net Balance" styleClass="cardLabel" />
+                <Label text="EGP 11,300" styleClass="cardAmount" />
+                <Label text="✔ On track" styleClass="cardTrend, positive" />
+            </VBox>
+
+        </HBox>
+
+        <!-- Recent Transactions -->
+        <VBox id="transactionsBox" spacing="10">
+            <Label text="Recent Transactions" styleClass="sectionTitle" />
+
+            <HBox styleClass="transactionRow">
+                <Label text="🛒  Grocery Shopping"  styleClass="txName" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="- EGP 450"  styleClass="txAmount, negative" />
+            </HBox>
+
+            <HBox styleClass="transactionRow">
+                <Label text="💼  Salary Received"   styleClass="txName" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="+ EGP 12,000" styleClass="txAmount, positive" />
+            </HBox>
+
+            <HBox styleClass="transactionRow">
+                <Label text="🍕  Restaurant"         styleClass="txName" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="- EGP 320"  styleClass="txAmount, negative" />
+            </HBox>
+
+            <HBox styleClass="transactionRow">
+                <Label text="📱  Phone Bill"         styleClass="txName" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="- EGP 180"  styleClass="txAmount, negative" />
+            </HBox>
+
+            <HBox styleClass="transactionRow">
+                <Label text="🏋️  Gym Membership"    styleClass="txName" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="- EGP 600"  styleClass="txAmount, negative" />
+            </HBox>
+
+        </VBox>
+
+        <!-- Budget Progress -->
+        <VBox id="budgetBox" spacing="10">
+            <Label text="Budget Goals" styleClass="sectionTitle" />
+
+            <VBox styleClass="progressItem">
+                <HBox>
+                    <Label text="Food &amp; Drinks" styleClass="progressLabel" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label text="EGP 770 / 1,500" styleClass="progressValue" />
+                </HBox>
+                <ProgressBar styleClass="progressBar" progress="0.51" maxWidth="Infinity" />
+            </VBox>
+
+            <VBox styleClass="progressItem">
+                <HBox>
+                    <Label text="Transport" styleClass="progressLabel" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label text="EGP 900 / 1,000" styleClass="progressValue" />
+                </HBox>
+                <ProgressBar styleClass="progressBar, dangerBar" progress="0.90" maxWidth="Infinity" />
+            </VBox>
+
+            <VBox styleClass="progressItem">
+                <HBox>
+                    <Label text="Entertainment" styleClass="progressLabel" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label text="EGP 200 / 800" styleClass="progressValue" />
+                </HBox>
+                <ProgressBar styleClass="progressBar" progress="0.25" maxWidth="Infinity" />
+            </VBox>
+
+        </VBox>
+
+    </VBox>
+
+</AnchorPane>

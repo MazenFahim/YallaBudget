@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.layout.Region?>
+<VBox alignment="CENTER" id="MainLayout" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      stylesheets="@css/login.css" fx:controller="com.mazenfahim.YallaBudget.LoginController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <VBox id="loginForm">
+        <TextField fx:id="usernameField" id="usernameField" promptText="Enter your username" styleClass="field"/>
+        <TextField fx:id="emailField" id="emailField" promptText="Enter your email" styleClass="field"/>
+        <PasswordField fx:id="passwordField" id="passwordField" promptText="Enter your password" styleClass="field"/>
+        <Button fx:id="loginButton" id="loginButton" text="Login" onAction="#validateCredentials"/>
+        <HBox>
+            <CheckBox fx:id="remember_me" text="Remember me"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <Hyperlink fx:id="forgotPassword" id="forgotPassword" text="Forgot password?"/>
+        </HBox>
+    </VBox>
+</VBox>

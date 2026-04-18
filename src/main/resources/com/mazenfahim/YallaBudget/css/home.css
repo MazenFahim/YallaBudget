@@ -1,0 +1,186 @@
+#mainLayout {
+    -fx-background-color: #F7F3EC;
+}
+
+/* ── Sidebar ── */
+#sidebar {
+    -fx-background-color: #1E1E2E;
+    -fx-pref-width: 220px;
+    -fx-padding: 28px 16px 24px 16px;
+    -fx-spacing: 24px;
+}
+
+#appTitle {
+    -fx-text-fill: #F28C28;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 12px 4px;
+}
+
+#navLinks {
+    -fx-spacing: 6px;
+}
+
+.navBtn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #AAAACC;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 188px;
+    -fx-pref-height: 40px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.navBtn:hover {
+    -fx-background-color: #2A2A3E;
+    -fx-text-fill: white;
+}
+
+.activeNav {
+    -fx-background-color: #2A2A3E;
+    -fx-text-fill: #F28C28;
+}
+
+#logoutBtn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FF6B6B;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 188px;
+    -fx-pref-height: 40px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+#logoutBtn:hover {
+    -fx-background-color: #2A2A3E;
+}
+
+/* ── Main Content ── */
+#mainContent {
+    -fx-padding: 28px 32px 28px 32px;
+    -fx-background-color: #F7F3EC;
+}
+
+#topBar {
+    -fx-padding: 0 0 8px 0;
+}
+
+#greeting {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E1E2E;
+}
+
+#dateLabel {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7B7B7B;
+}
+
+/* ── Summary Cards ── */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #E7DED1;
+    -fx-border-radius: 14px;
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+    -fx-spacing: 6px;
+    -fx-pref-width: 180px;
+}
+
+.cardLabel {
+    -fx-text-fill: #7B7B7B;
+    -fx-font-size: 12px;
+}
+
+.cardAmount {
+    -fx-text-fill: #1E1E2E;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.cardTrend {
+    -fx-font-size: 11px;
+}
+
+/* ── Transactions ── */
+#transactionsBox {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #E7DED1;
+    -fx-border-radius: 14px;
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+}
+
+.sectionTitle {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E1E2E;
+    -fx-padding: 0 0 6px 0;
+}
+
+.transactionRow {
+    -fx-padding: 10px 0 10px 0;
+    -fx-border-color: transparent transparent #F0EBE3 transparent;
+    -fx-border-width: 1px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.txName {
+    -fx-font-size: 13px;
+    -fx-text-fill: #1E1E2E;
+}
+
+.txAmount {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* ── Budget Progress ── */
+#budgetBox {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #E7DED1;
+    -fx-border-radius: 14px;
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+}
+
+.progressItem {
+    -fx-spacing: 6px;
+    -fx-padding: 4px 0 4px 0;
+}
+
+.progressLabel {
+    -fx-font-size: 13px;
+    -fx-text-fill: #1E1E2E;
+}
+
+.progressValue {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7B7B7B;
+}
+
+.progressBar {
+    -fx-pref-height: 8px;
+    -fx-background-radius: 6px;
+    -fx-accent: #F28C28;
+}
+
+.dangerBar {
+    -fx-accent: #FF6B6B;
+}
+
+/* ── Shared ── */
+.positive {
+    -fx-text-fill: #27AE60;
+}
+
+.negative {
+    -fx-text-fill: #FF6B6B;
+}
