@@ -12,11 +12,4 @@ import java.io.IOException;
 
 public class HomeController {
 
-    @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root, 860, 600));
-        stage.show();
-    }
 }
