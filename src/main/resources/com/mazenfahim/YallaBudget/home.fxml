@@ -6,7 +6,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mazenfahim.YallaBudget.HomeController"
+            fx:controller="com.mazenfahim.YallaBudget.Controller.HomeController"
             stylesheets="@css/home.css"
             id="mainLayout"
             prefHeight="680.0" prefWidth="900.0">
