@@ -1,6 +1,7 @@
 module com.mazenfahim.YallaBudget {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
     opens com.mazenfahim.YallaBudget to javafx.fxml;
     exports com.mazenfahim.YallaBudget;

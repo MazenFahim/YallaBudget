@@ -1,20 +1,23 @@
 package com.mazenfahim.YallaBudget.Model;
 
-import java.util.Objects;
+
 
 public class User {
     private String UserName;
     private String PIN;
 
-    public void SetPIN(String pin){
-        PIN=pin;
+    public User(String name,String pin){
+        this.UserName=name;
+        this.PIN=pin;
     }
-    public void SetName(String name){
-        UserName=name;
+
+    public String getPIN(){
+        return PIN;
     }
     public String getName(){
         return UserName;
     }
+
     public boolean VerifyPIN(String pin){
     return PIN.equals(pin);
     }
