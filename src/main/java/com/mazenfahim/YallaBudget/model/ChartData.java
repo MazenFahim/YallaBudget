@@ -1,11 +1,12 @@
-package com.mazenfahim.YallaBudget.Service;
+package com.mazenfahim.YallaBudget.model;
 
 public class ChartData {
     private String category;
     private double amount;
-    public ChartData(String  category,double amount) {
-        this.category=category;
-        this.amount=amount;
+
+    public ChartData(String category, double amount) {
+        this.category = category;
+        this.amount = amount;
     }
 
     public double getAmount() {

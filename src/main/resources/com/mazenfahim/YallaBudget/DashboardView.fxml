@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mazenfahim.YallaBudget.controller.DashboardController"
+            stylesheets="@css/home.css"
+            prefHeight="680.0" prefWidth="900.0"
+            styleClass="app-root">
+    <VBox spacing="22.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="30.0">
+        <HBox alignment="CENTER_LEFT" spacing="16.0">
+            <Label text="Dashboard" styleClass="app-title" HBox.hgrow="ALWAYS" />
+            <Button text="Add Expense" onAction="#onAddExpenseClicked" styleClass="primary-button" />
+            <Button text="History" onAction="#onHistoryClicked" styleClass="secondary-button" />
+            <Button text="Settings" onAction="#onSettingsClicked" styleClass="secondary-button" />
+        </HBox>
+
+        <HBox spacing="18.0">
+            <VBox spacing="8.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <padding><Insets top="18.0" right="18.0" bottom="18.0" left="18.0" /></padding>
+                <Label text="Remaining Balance" styleClass="stat-title" />
+                <Label fx:id="remainingBalanceLabel" text="0.00 EGP" styleClass="stat-value" />
+            </VBox>
+            <VBox spacing="8.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <padding><Insets top="18.0" right="18.0" bottom="18.0" left="18.0" /></padding>
+                <Label text="Daily Limit" styleClass="stat-title" />
+                <Label fx:id="dailyLimitLabel" text="0.00 EGP" styleClass="stat-value" />
+            </VBox>
+            <VBox spacing="8.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <padding><Insets top="18.0" right="18.0" bottom="18.0" left="18.0" /></padding>
+                <Label text="Total Spending" styleClass="stat-title" />
+                <Label fx:id="totalSpendingLabel" text="0.00 EGP" styleClass="stat-value" />
+            </VBox>
+        </HBox>
+
+        <Label fx:id="thresholdWarningLabel" styleClass="warning-label" />
+        <PieChart fx:id="categoryPieChart" title="Spending by Category" VBox.vgrow="ALWAYS" />
+    </VBox>
+</AnchorPane>

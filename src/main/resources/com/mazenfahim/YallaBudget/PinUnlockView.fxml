@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mazenfahim.YallaBudget.controller.PinUnlockController"
+            stylesheets="@css/home.css"
+            prefHeight="680.0" prefWidth="900.0"
+            styleClass="app-root">
+    <VBox alignment="CENTER" spacing="18.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="160.0">
+        <padding>
+            <Insets top="30.0" right="30.0" bottom="30.0" left="30.0" />
+        </padding>
+        <Label text="Welcome Back" styleClass="app-title" />
+        <Label text="Unlock Yalla Budget" styleClass="app-subtitle" />
+        <PasswordField fx:id="pinInput" promptText="Enter PIN" />
+        <Label fx:id="errorLabel" styleClass="error-label" />
+        <Button text="Unlock" maxWidth="Infinity" onAction="#onUnlockClicked" styleClass="primary-button" />
+    </VBox>
+</AnchorPane>
