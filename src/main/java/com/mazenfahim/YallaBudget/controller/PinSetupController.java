@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class PinSetupController {
-    private PinModel pinModel = new PinModel();
+    private final PinModel pinModel = new PinModel();
 
     @FXML
     private PasswordField pinInput;
@@ -49,14 +49,14 @@ public class PinSetupController {
 
         try {
             pinModel.saveUser(username, pin);
-            navigateTo("BudgetSetupView.fxml");
+            navigateTo();
         } catch (Exception e) {
             showValidationError("Could not create PIN. Please try again.");
         }
     }
 
-    private void navigateTo(String fxmlFile) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mazenfahim/YallaBudget/" + fxmlFile));
+    private void navigateTo() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mazenfahim/YallaBudget/" + "BudgetSetupView.fxml"));
         Scene scene = new Scene(loader.load(), 900, 680);
         Stage stage = (Stage) pinInput.getScene().getWindow();
         stage.setScene(scene);
