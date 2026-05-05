@@ -13,27 +13,54 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Handles settings actions such as PIN changes and cycle reset.
+ */
 public class SettingsController {
+    /**
+     * Model for PIN operations.
+     */
     private PinModel pinModel = new PinModel();
+    /**
+     * Model for budget cycle operations.
+     */
     private BudgetModel budgetModel = new BudgetModel();
 
+    /**
+     * Input for the current PIN.
+     */
     @FXML
     private PasswordField oldPinInput;
 
+    /**
+     * Input for the new PIN.
+     */
     @FXML
     private PasswordField newPinInput;
 
+    /**
+     * Input for confirming the new PIN.
+     */
     @FXML
     private PasswordField confirmNewPinInput;
 
+    /**
+     * Label for validation and status messages.
+     */
     @FXML
     private Label errorLabel;
 
+    /**
+     * Clears messages on view load.
+     */
     @FXML
     public void initialize() {
         errorLabel.setText("");
     }
 
+    /**
+     * Validates inputs and updates the stored PIN.
+     */
     @FXML
     public void onChangePinClicked() {
         String oldPin = oldPinInput.getText() == null ? "" : oldPinInput.getText().trim();
@@ -66,6 +93,9 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Confirms and resets the current budget cycle.
+     */
     @FXML
     public void onResetCycleClicked() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -85,6 +115,9 @@ public class SettingsController {
         });
     }
 
+    /**
+     * Returns to the dashboard view.
+     */
     @FXML
     public void onBackClicked() {
         try {
@@ -94,6 +127,12 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Navigates to a specified FXML view.
+     *
+     * @param fxmlFile target FXML file name
+     * @throws IOException if the view cannot be loaded
+     */
     private void navigateTo(String fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mazenfahim/YallaBudget/" + fxmlFile));
         Scene scene = new Scene(loader.load(), 900, 680);
@@ -101,6 +140,11 @@ public class SettingsController {
         stage.setScene(scene);
     }
 
+    /**
+     * Displays a validation or status message.
+     *
+     * @param message message to display
+     */
     private void showValidationError(String message) {
         errorLabel.setText(message);
     }

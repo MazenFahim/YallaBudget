@@ -11,26 +11,50 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Handles initial user setup and PIN creation.
+ */
 public class PinSetupController {
+    /**
+     * Model for saving user credentials.
+     */
     private final PinModel pinModel = new PinModel();
 
+    /**
+     * PIN input field.
+     */
     @FXML
     private PasswordField pinInput;
 
+    /**
+     * Confirmation PIN input field.
+     */
     @FXML
     private PasswordField confirmPinInput;
 
+    /**
+     * Username input field.
+     */
     @FXML
     private TextField usernameInput;
 
+    /**
+     * Label for validation and error messages.
+     */
     @FXML
     private Label errorLabel;
 
+    /**
+     * Clears error messages on view load.
+     */
     @FXML
     public void initialize() {
         errorLabel.setText("");
     }
 
+    /**
+     * Validates input and saves a new user PIN.
+     */
     @FXML
     public void onCreatePinClicked() {
         String username = usernameInput.getText() == null ? "" : usernameInput.getText().trim();
@@ -55,6 +79,11 @@ public class PinSetupController {
         }
     }
 
+    /**
+     * Navigates to the budget setup view.
+     *
+     * @throws IOException if the view cannot be loaded
+     */
     private void navigateTo() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mazenfahim/YallaBudget/" + "BudgetSetupView.fxml"));
         Scene scene = new Scene(loader.load(), 900, 680);
@@ -62,6 +91,11 @@ public class PinSetupController {
         stage.setScene(scene);
     }
 
+    /**
+     * Displays a validation or error message.
+     *
+     * @param message message to display
+     */
     private void showValidationError(String message) {
         errorLabel.setText(message);
     }

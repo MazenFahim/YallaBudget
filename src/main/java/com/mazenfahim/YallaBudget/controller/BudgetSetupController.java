@@ -13,21 +13,42 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 
+/**
+ * Handles creating a new budget cycle from the setup screen.
+ */
 public class BudgetSetupController {
-    private BudgetModel budgetModel = new BudgetModel();
+    /**
+     * Model facade for budget cycle operations.
+     */
+    private final BudgetModel budgetModel = new BudgetModel();
 
+    /**
+     * Input for total allowance amount.
+     */
     @FXML
     private TextField allowanceInput;
 
+    /**
+     * Date picker for the cycle start date.
+     */
     @FXML
     private DatePicker startDatePicker;
 
+    /**
+     * Date picker for the cycle end date.
+     */
     @FXML
     private DatePicker endDatePicker;
 
+    /**
+     * Label for validation and error messages.
+     */
     @FXML
     private Label errorLabel;
 
+    /**
+     * Initializes default dates and clears messages when the view loads.
+     */
     @FXML
     public void initialize() {
         errorLabel.setText("");
@@ -35,6 +56,9 @@ public class BudgetSetupController {
         endDatePicker.setValue(LocalDate.now().plusDays(30));
     }
 
+    /**
+     * Validates input and starts a new budget cycle.
+     */
     @FXML
     public void onStartCycleClicked() {
         try {
@@ -55,7 +79,7 @@ public class BudgetSetupController {
             BudgetCycle cycle = new BudgetCycle(amount, start, end);
             budgetModel.saveCycle(cycle);
             budgetModel.insertCategories();
-            navigateTo("DashboardView.fxml");
+            navigateTo();
         } catch (NumberFormatException e) {
             showValidationError("Please enter a valid allowance amount.");
         } catch (Exception e) {
@@ -63,13 +87,23 @@ public class BudgetSetupController {
         }
     }
 
-    private void navigateTo(String fxmlFile) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mazenfahim/YallaBudget/" + fxmlFile));
+    /**
+     * Navigates to the dashboard after a cycle is created.
+     *
+     * @throws IOException if the dashboard view cannot be loaded
+     */
+    private void navigateTo() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mazenfahim/YallaBudget/" + "DashboardView.fxml"));
         Scene scene = new Scene(loader.load(), 900, 680);
         Stage stage = (Stage) allowanceInput.getScene().getWindow();
         stage.setScene(scene);
     }
 
+    /**
+     * Displays a validation or error message to the user.
+     *
+     * @param message message to display
+     */
     private void showValidationError(String message) {
         errorLabel.setText(message);
     }

@@ -67,7 +67,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.mazenfahim.YallaBudget/com.mazenfahim.YallaBudget.Launcher</mainClass>
+                            <mainClass>com.mazenfahim.YallaBudget.Launcher</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
@@ -77,6 +77,17 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.12.0</version>
+                <configuration>
+                    <source>21</source>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                    <additionalOptions>--ignore-source-errors</additionalOptions>
+                    <legacyMode>true</legacyMode>
+                </configuration>
             </plugin>
         </plugins>
     </build>

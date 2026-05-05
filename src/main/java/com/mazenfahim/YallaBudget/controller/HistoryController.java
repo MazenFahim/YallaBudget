@@ -24,30 +24,66 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Manages the history view for listing and filtering expenses.
+ */
 public class HistoryController {
+    /**
+     * Model for expense operations.
+     */
     private ExpenseModel expenseModel = new ExpenseModel();
+    /**
+     * Model for history filtering and sorting.
+     */
     private HistoryModel historyModel = new HistoryModel(expenseModel);
+    /**
+     * Model for loading the active budget cycle.
+     */
     private BudgetModel budgetModel = new BudgetModel();
+    /**
+     * Mapping from category names to their database IDs.
+     */
     private Map<String, Integer> categoryNameToId = new HashMap<>();
 
+    /**
+     * Table view showing expense rows.
+     */
     @FXML
     private TableView<Expense> expenseTableView;
 
+    /**
+     * Combo box used to filter by category.
+     */
     @FXML
     private ComboBox<String> categoryFilterComboBox;
 
+    /**
+     * Start date for filtering expenses.
+     */
     @FXML
     private DatePicker fromDatePicker;
 
+    /**
+     * End date for filtering expenses.
+     */
     @FXML
     private DatePicker toDatePicker;
 
+    /**
+     * Button to delete the selected expense.
+     */
     @FXML
     private Button deleteButton;
 
+    /**
+     * Label for informational and error messages.
+     */
     @FXML
     private Label messageLabel;
 
+    /**
+     * Initializes the table, filters, and initial data.
+     */
     @FXML
     public void initialize() {
         setupTableColumns();
@@ -56,6 +92,9 @@ public class HistoryController {
         deleteButton.disableProperty().bind(expenseTableView.getSelectionModel().selectedItemProperty().isNull());
     }
 
+    /**
+     * Configures the table columns for displaying expense data.
+     */
     private void setupTableColumns() {
         TableColumn<Expense, String> dateColumn = new TableColumn<>("Date");
         dateColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getTimestamp().toLocalDate().toString()));
@@ -69,6 +108,9 @@ public class HistoryController {
         expenseTableView.getColumns().setAll(dateColumn, categoryColumn, amountColumn);
     }
 
+    /**
+     * Loads categories into the filter combo box.
+     */
     private void populateCategoryFilter() {
         categoryNameToId.clear();
         categoryFilterComboBox.getItems().clear();
@@ -82,6 +124,9 @@ public class HistoryController {
         categoryFilterComboBox.setValue("All Categories");
     }
 
+    /**
+     * Loads expenses and applies current filter selections.
+     */
     private void loadAndDisplayExpenses() {
         BudgetCycle cycle = budgetModel.loadCycle();
         if (cycle == null) {
@@ -107,11 +152,17 @@ public class HistoryController {
         messageLabel.setText(expenses.isEmpty() ? "No transactions found." : "");
     }
 
+    /**
+     * Refreshes the expense list when filters change.
+     */
     @FXML
     public void onFilterChanged() {
         loadAndDisplayExpenses();
     }
 
+    /**
+     * Deletes the currently selected expense.
+     */
     @FXML
     public void onDeleteExpenseClicked() {
         Expense selectedExpense = expenseTableView.getSelectionModel().getSelectedItem();
@@ -128,6 +179,9 @@ public class HistoryController {
         }
     }
 
+    /**
+     * Returns to the dashboard view.
+     */
     @FXML
     public void onBackClicked() {
         try {
@@ -137,6 +191,12 @@ public class HistoryController {
         }
     }
 
+    /**
+     * Navigates to a specified FXML view.
+     *
+     * @param fxmlFile target FXML file name
+     * @throws IOException if the view cannot be loaded
+     */
     private void navigateTo(String fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mazenfahim/YallaBudget/" + fxmlFile));
         Scene scene = new Scene(loader.load(), 900, 680);

@@ -15,31 +15,64 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controls the main dashboard view that summarizes budget status.
+ */
 public class DashboardController {
+    /**
+     * Model for budget cycle operations.
+     */
     private BudgetModel budgetModel = new BudgetModel();
+    /**
+     * Model for expense persistence.
+     */
     private ExpenseModel expenseModel = new ExpenseModel();
+    /**
+     * Model for aggregations displayed on the dashboard.
+     */
     private DashboardModel dashboardModel = new DashboardModel(expenseModel);
 
+    /**
+     * Label showing remaining balance.
+     */
     @FXML
     private Label remainingBalanceLabel;
 
+    /**
+     * Label showing daily spending limit.
+     */
     @FXML
     private Label dailyLimitLabel;
 
+    /**
+     * Label showing total spending.
+     */
     @FXML
     private Label totalSpendingLabel;
 
+    /**
+     * Pie chart for spending by category.
+     */
     @FXML
     private PieChart categoryPieChart;
 
+    /**
+     * Label used for threshold warning messages.
+     */
     @FXML
     private Label thresholdWarningLabel;
 
+    /**
+     * Initializes the dashboard when the view loads.
+     */
     @FXML
     public void initialize() {
         refreshDashboard();
     }
 
+    /**
+     * Refreshes all dashboard metrics and charts from current data.
+     */
     public void refreshDashboard() {
         BudgetCycle cycle = budgetModel.loadCycle();
 
@@ -69,25 +102,45 @@ public class DashboardController {
         }
     }
 
+    /**
+     * Opens the expense entry screen.
+     */
     @FXML
     public void onAddExpenseClicked() {
         navigateSafely("ExpenseEntryView.fxml");
     }
 
+    /**
+     * Opens the transaction history screen.
+     */
     @FXML
     public void onHistoryClicked() {
         navigateSafely("HistoryView.fxml");
     }
 
+    /**
+     * Opens the settings screen.
+     */
     @FXML
     public void onSettingsClicked() {
         navigateSafely("SettingsView.fxml");
     }
 
+    /**
+     * Formats a currency value for display.
+     *
+     * @param value amount to format
+     * @return formatted amount with currency label
+     */
     private String formatMoney(double value) {
         return String.format("%.2f EGP", value);
     }
 
+    /**
+     * Navigates to an FXML view and shows a warning if it fails.
+     *
+     * @param fxmlFile target FXML file name
+     */
     private void navigateSafely(String fxmlFile) {
         try {
             navigateTo(fxmlFile);
@@ -96,6 +149,12 @@ public class DashboardController {
         }
     }
 
+    /**
+     * Loads and displays the requested FXML view.
+     *
+     * @param fxmlFile target FXML file name
+     * @throws IOException if the view cannot be loaded
+     */
     private void navigateTo(String fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mazenfahim/YallaBudget/" + fxmlFile));
         Scene scene = new Scene(loader.load(), 900, 680);
