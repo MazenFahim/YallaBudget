@@ -11,21 +11,42 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Handles PIN verification before allowing access to the app.
+ */
 public class PinUnlockController {
+    /**
+     * Model for user credential operations.
+     */
     private PinModel pinModel = new PinModel();
+    /**
+     * Model for loading budget cycle state.
+     */
     private BudgetModel budgetModel = new BudgetModel();
 
+    /**
+     * PIN input field.
+     */
     @FXML
     private PasswordField pinInput;
 
+    /**
+     * Label for validation and error messages.
+     */
     @FXML
     private Label errorLabel;
 
+    /**
+     * Clears error messages on view load.
+     */
     @FXML
     public void initialize() {
         errorLabel.setText("");
     }
 
+    /**
+     * Verifies the PIN and navigates to the appropriate view.
+     */
     @FXML
     public void onUnlockClicked() {
         String pin = pinInput.getText() == null ? "" : pinInput.getText().trim();
@@ -50,6 +71,12 @@ public class PinUnlockController {
         }
     }
 
+    /**
+     * Navigates to the requested view.
+     *
+     * @param fxmlFile target FXML file name
+     * @throws IOException if the view cannot be loaded
+     */
     private void navigateTo(String fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mazenfahim/YallaBudget/" + fxmlFile));
         Scene scene = new Scene(loader.load(), 900, 680);
@@ -57,6 +84,11 @@ public class PinUnlockController {
         stage.setScene(scene);
     }
 
+    /**
+     * Displays a validation or error message.
+     *
+     * @param message message to display
+     */
     private void showValidationError(String message) {
         errorLabel.setText(message);
     }
