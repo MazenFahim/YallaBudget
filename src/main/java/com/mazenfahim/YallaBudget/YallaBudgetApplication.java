@@ -31,7 +31,7 @@ public class YallaBudgetApplication extends Application {
         }
 
         FXMLLoader fxmlLoader = new FXMLLoader(YallaBudgetApplication.class.getResource(initialView));
-        Scene scene = new Scene(fxmlLoader.load(), 860, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 900, 680);
         stage.setTitle("Yalla Budget");
         stage.setScene(scene);
         stage.show();

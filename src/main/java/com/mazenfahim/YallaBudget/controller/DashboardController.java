@@ -1,19 +1,17 @@
 package com.mazenfahim.YallaBudget.controller;
 
-import com.mazenfahim.YallaBudget.model.BudgetCycle;
-import com.mazenfahim.YallaBudget.model.BudgetModel;
-import com.mazenfahim.YallaBudget.model.ChartData;
-import com.mazenfahim.YallaBudget.model.DashboardModel;
-import com.mazenfahim.YallaBudget.model.ExpenseModel;
+import com.mazenfahim.YallaBudget.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Controls the main dashboard view that summarizes budget status.
@@ -61,7 +59,11 @@ public class DashboardController {
      */
     @FXML
     private Label thresholdWarningLabel;
-
+    /**
+     * VBox container for displaying recommendations.
+     */
+    @FXML
+    public VBox recommendationsBox;
     /**
      * Initializes the dashboard when the view loads.
      */
@@ -99,6 +101,19 @@ public class DashboardController {
             thresholdWarningLabel.setText("Warning: you have spent 80% or more of your allowance.");
         } else {
             thresholdWarningLabel.setText("");
+        }
+
+        Map<String, Double> categoryTotals = dashboardModel.calculateCategoryTotals(cycle.getId());
+        List<String> tips = RecommendationEngine.analyze(cycle, categoryTotals);
+
+        recommendationsBox.getChildren().clear();
+        if (tips != null) {
+            for (String tip : tips) {
+                Label tipLabel = new Label(tip);
+                tipLabel.setWrapText(true);
+                tipLabel.getStyleClass().add("recommendation-label");
+                recommendationsBox.getChildren().add(tipLabel);
+            }
         }
     }
 

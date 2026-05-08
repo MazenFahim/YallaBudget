@@ -41,6 +41,15 @@
         </HBox>
 
         <Label fx:id="thresholdWarningLabel" styleClass="warning-label" />
-        <PieChart fx:id="categoryPieChart" title="Spending by Category" VBox.vgrow="ALWAYS" />
+
+        <HBox spacing="18.0" VBox.vgrow="ALWAYS">
+            <PieChart fx:id="categoryPieChart" title="Spending by Category" HBox.hgrow="ALWAYS" />
+
+            <VBox spacing="10.0" styleClass="stat-card" prefWidth="240.0">
+                <padding><Insets top="18.0" right="18.0" bottom="18.0" left="18.0" /></padding>
+                <Label text="💡 Recommendations" styleClass="stat-title" />
+                <VBox fx:id="recommendationsBox" spacing="8.0" />
+            </VBox>
+        </HBox>
     </VBox>
 </AnchorPane>
