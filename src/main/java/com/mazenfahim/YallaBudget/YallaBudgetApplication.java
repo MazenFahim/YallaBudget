@@ -14,12 +14,6 @@ import java.io.IOException;
  * JavaFX application that initializes the database and selects the first view.
  */
 public class YallaBudgetApplication extends Application {
-    /**
-     * Builds the initial scene based on stored user and budget cycle state.
-     *
-     * @param stage primary stage provided by JavaFX
-     * @throws IOException if the initial FXML view cannot be loaded
-     */
     @Override
     public void start(Stage stage) throws IOException {
         SQLiteDatabase.createTables();
@@ -37,7 +31,7 @@ public class YallaBudgetApplication extends Application {
         }
 
         FXMLLoader fxmlLoader = new FXMLLoader(YallaBudgetApplication.class.getResource(initialView));
-        Scene scene = new Scene(fxmlLoader.load(), 900, 680);
+        Scene scene = new Scene(fxmlLoader.load(), 860, 600);
         stage.setTitle("Yalla Budget");
         stage.setScene(scene);
         stage.show();
