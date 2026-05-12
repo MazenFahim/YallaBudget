@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -48,6 +49,11 @@ public class DashboardController {
     @FXML
     private Label totalSpendingLabel;
 
+    @FXML
+    private ProgressBar spendingProgressBar;
+
+    @FXML
+    private Label spendingPercentageLabel;
     /**
      * Pie chart for spending by category.
      */
@@ -115,6 +121,20 @@ public class DashboardController {
                 recommendationsBox.getChildren().add(tipLabel);
             }
         }
+        double spentPercentage= cycle.getPercentageSpending();
+        if(spentPercentage>0){
+            // Update progress bar and label
+            spendingProgressBar.setProgress(spentPercentage/100);
+            spendingPercentageLabel.setText(String.format("%.1f%% spent", spentPercentage));
+
+            // Update color based on percentage
+            updateProgressBarColor(spentPercentage);
+        }
+        else {
+            spendingProgressBar.setProgress(0);
+            spendingPercentageLabel.setText("0% spent");
+            updateProgressBarColor(0);
+        }
     }
 
     /**
@@ -175,5 +195,26 @@ public class DashboardController {
         Scene scene = new Scene(loader.load(), 900, 680);
         Stage stage = (Stage) remainingBalanceLabel.getScene().getWindow();
         stage.setScene(scene);
+    }
+    /**
+     * Updates the progress bar color based on spending percentage
+     * Green: < 30%, Yellow: 30-59%, Orange: 60-89%, Red: ≥ 90%
+     */
+    private void updateProgressBarColor(double spentPercentage) {
+        // Remove existing color classes
+        spendingProgressBar.getStyleClass().removeAll(
+                "progress-green", "progress-yellow", "progress-orange", "progress-red"
+        );
+
+        // Add appropriate color class
+        if (spentPercentage < 30) {
+            spendingProgressBar.getStyleClass().add("progress-green");
+        } else if (spentPercentage < 60) {
+            spendingProgressBar.getStyleClass().add("progress-yellow");
+        } else if (spentPercentage < 90) {
+            spendingProgressBar.getStyleClass().add("progress-orange");
+        } else {
+            spendingProgressBar.getStyleClass().add("progress-red");
+        }
     }
 }

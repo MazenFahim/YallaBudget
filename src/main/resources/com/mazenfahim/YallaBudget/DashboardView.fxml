@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.ProgressBar?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.mazenfahim.YallaBudget.controller.DashboardController"
@@ -27,6 +28,8 @@
                 <padding><Insets top="18.0" right="18.0" bottom="18.0" left="18.0" /></padding>
                 <Label text="Remaining Balance" styleClass="stat-title" />
                 <Label fx:id="remainingBalanceLabel" text="0.00 EGP" styleClass="stat-value" />
+                <ProgressBar fx:id="spendingProgressBar" prefWidth="200.0" progress="0.0" styleClass="spending-progress-bar" />
+                <Label fx:id="spendingPercentageLabel" text="0% spent" styleClass="progress-percentage" />
             </VBox>
             <VBox spacing="8.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
                 <padding><Insets top="18.0" right="18.0" bottom="18.0" left="18.0" /></padding>

@@ -96,3 +96,46 @@
     -fx-border-color: rgba(255,255,255,0.08);
     -fx-border-radius: 10px;
 }
+/* ========== PROGRESS BAR STYLES (WORKING VERSION) ========== */
+
+.spending-progress-bar {
+    -fx-pref-height: 15px;
+    -fx-max-width: Infinity;
+    -fx-min-width: 150px;
+}
+
+.spending-progress-bar .track {
+    -fx-background-color: #374151;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
+.spending-progress-bar .bar {
+    -fx-background-radius: 8px;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+/* Color the bar directly when style class is on progress bar */
+.spending-progress-bar.progress-green .bar {
+    -fx-background-color: #22c55e;
+}
+
+.spending-progress-bar.progress-yellow .bar {
+    -fx-background-color: #eab308;
+}
+
+.spending-progress-bar.progress-orange .bar {
+    -fx-background-color: #cd6a00;
+}
+
+.spending-progress-bar.progress-red .bar {
+    -fx-background-color: #ff0000;
+}
+
+.progress-percentage {
+    -fx-font-size: 12px;
+    -fx-text-fill: #9ca3af;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-padding: 4px 0 0 0;
+}
